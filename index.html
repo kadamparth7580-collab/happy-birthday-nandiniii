@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For Nandini 💜</title>
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:black;
+    color:white;
+    font-family:Poppins, sans-serif;
+    overflow:hidden;
+    opacity:0;
+    transition:opacity 1.5s ease;
+}
+body.loaded{
+    opacity:1;
+}
+#intro{
+    text-align:center;
+}
+h1{
+    font-size:3em;
+    letter-spacing:3px;
+    animation:glow 2s ease-in-out infinite alternate;
+}
+@keyframes glow{
+    from{text-shadow:0 0 10px #b57edc;}
+    to{text-shadow:0 0 30px #d8b4f8;}
+}
+button{
+    padding:15px 40px;
+    border:none;
+    border-radius:30px;
+    background:#b57edc;
+    color:white;
+    font-size:1em;
+    cursor:pointer;
+    margin-top:30px;
+    transition:0.3s;
+}
+button:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 20px #b57edc;
+}
+</style>
+</head>
+<body>
+<div id="intro">
+    <h1>For Someone Very Special 💜</h1>
+    <button onclick="enter()">Enter</button>
+</div>
+<audio id="music" loop>
+    <source src="./song.mp3" type="audio/mpeg">
+</audio>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+    document.body.classList.add("loaded");
+});
+function enter(){
+    // Start music (ignore autoplay errors safely)
+    const music=document.getElementById("music");
+    music.play().catch(function(){});
+    // Save state for next pages
+    localStorage.setItem("music","on");
+    // Fade out
+    document.body.style.opacity="0";
+    // Go to next page
+    setTimeout(function(){
+        window.location.href="./memories.html";
+    },800);
+}
+</script>
+</body>
+</html>

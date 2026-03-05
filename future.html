@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Our Future 💜</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Poppins,sans-serif;
+    background:#1a1a2e;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    color:white;
+    opacity:0;
+    transition:opacity 1s ease;
+}
+body.loaded{opacity:1;}
+
+.container{
+    text-align:center;
+    max-width:700px;
+}
+
+h1{
+    font-size:2.5em;
+    margin-bottom:20px;
+    animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0px);}
+    50%{transform:translateY(-20px);}
+}
+
+p{
+    font-size:1.2em;
+    line-height:1.8;
+    margin:20px 0;
+}
+
+button{
+    margin-top:30px;
+    padding:12px 40px;
+    background:#b57edc;
+    border:none;
+    border-radius:25px;
+    color:white;
+    font-size:1.1em;
+    cursor:pointer;
+}
+
+button:hover{
+    box-shadow:0 0 20px #b57edc;
+    transform:scale(1.05);
+}
+
+.fireworks{
+    position:fixed;
+    width:20px;
+    height:20px;
+    pointer-events:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Our Beautiful Future 💜</h1>
+    <p>This is just the beginning of our story.</p>
+    <p>I can't wait to create more memories with you!</p>
+    <p>Happy Birthday to the most special person in my life! 🎂✨</p>
+    <button onclick="celebrate()">Celebrate!</button>
+</div>
+
+<audio id="music" loop>
+<source src="./song.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+    document.body.classList.add("loaded");
+
+    if(localStorage.getItem("music")==="on"){
+        document.getElementById("music").play();
+    }
+});
+
+function celebrate(){
+    // Confetti/Fireworks effect
+    for(let i=0;i<50;i++){
+        let firework=document.createElement("div");
+        firework.innerHTML="🎉";
+        firework.style.position="fixed";
+        firework.style.left=Math.random()*100+"%";
+        firework.style.top=Math.random()*100+"%";
+        firework.style.fontSize="30px";
+        firework.style.animation="fall 3s ease-in forwards";
+        document.body.appendChild(firework);
+    }
+
+    alert("Happy Birthday, Nandini! 💜🎉");
+}
+
+const style=document.createElement("style");
+style.innerHTML=`
+@keyframes fall{
+    to{transform:translateY(100vh);}
+}
+`;
+document.head.appendChild(style);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>A Letter For You 💜</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Poppins,sans-serif;
+    background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    color:white;
+    opacity:0;
+    transition:opacity 1s ease;
+}
+body.loaded{opacity:1;}
+
+.letter{
+    background:white;
+    color:#333;
+    padding:40px;
+    border-radius:15px;
+    max-width:600px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.3);
+    text-align:center;
+    line-height:1.8;
+}
+
+.letter h2{
+    color:#b57edc;
+    font-size:2em;
+}
+
+.letter p{
+    font-size:1.1em;
+}
+
+button{
+    margin-top:30px;
+    padding:10px 30px;
+    background:#b57edc;
+    border:none;
+    border-radius:20px;
+    color:white;
+    cursor:pointer;
+    font-size:1em;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+.spark{
+    position:fixed;
+    font-size:20px;
+    animation:sparkle 2s infinite;
+}
+
+@keyframes sparkle{
+    0%,100%{opacity:0;}
+    50%{opacity:1;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="letter">
+    <h2>A Letter For You 💜</h2>
+    <p>Hey! I just wanted to take a moment to tell you how special you are to me.</p>
+    <p>Every memory with you is precious, and I'm so grateful for all the moments we've shared.</p>
+    <p>You bring so much joy and light into my life. Happy Birthday! 🎉</p>
+    <button onclick="nextPage()">Next</button>
+</div>
+
+<audio id="music" loop>
+<source src="./song.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+    document.body.classList.add("loaded");
+
+    if(localStorage.getItem("music")==="on"){
+        document.getElementById("music").play();
+    }
+
+    // Create sparkles
+    for(let i=0;i<15;i++){
+        let spark=document.createElement("div");
+        spark.className="spark";
+        spark.innerHTML="✨";
+        spark.style.left=Math.random()*100+"%";
+        spark.style.top=Math.random()*100+"%";
+        spark.style.animationDelay=Math.random()*2+"s";
+        document.body.appendChild(spark);
+    }
+});
+
+function nextPage(){
+    document.body.style.opacity="0";
+    setTimeout(()=>{
+        window.location="./future.html";
+    },800);
+}
+</script>
+
+</body>
+</html>
